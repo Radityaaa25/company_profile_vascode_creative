@@ -1,11 +1,25 @@
-import React from 'react'
+import Navbar from "./component/navbar";
+import Footer from "./component/footer";
+import Homepages from "./pages/homepages";
 
-const App = () => {
+function App() {
   return (
-    <div>
-      <h1 className='text-3xl text-center text-red-500 font-bold'>Test World</h1>
+     <div>
+      
+      {/* Navbar */}
+      <Navbar/>
+
+
+      {/* Content */}
+      <Homepages/>
+      
+
+      {/* Footer */}
+      {/* <Footer/> */}
+
+
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
