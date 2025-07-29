@@ -1,31 +1,66 @@
 import Heroimage from '../assets/images/hero.svg';
 import Aboutimage from '../assets/images/about.svg';
-
 import Proyek1 from '../assets/images/proyek-1.webp';
 import Proyek2 from '../assets/images/proyek-2.webp';
 import Proyek3 from '../assets/images/proyek-3.webp';
 import Proyek4 from '../assets/images/proyek-4.webp';
 import Proyek5 from '../assets/images/proyek-5.webp';
 
-const Homepages = () => {
+import { motion } from 'framer-motion';
+import TypingAnimation from '../component/TypingAnimation'; // Impor komponen yang baru dibuat
+
+const HomePage = () => {
+  // Daftar teks yang akan berganti
+  const servicesText = ["Desain Grafis", "Web Development", "Video/Fotografi", "Editing Video"];
+
   return (
     <div className="homepage pb-10">
       <div className="container mx-auto px-4">
+        {/* HERO SECTION */}
         <div className="hero grid md:grid-cols-2 grid-cols-1 items-center gap-24 pt-32">
           <div className="box">
-            <h1 className='lg:text-5xl/tight text-3xl font-medium mb-7'>
-              Selamat Datang di Company Profile Kami <span className='font-bold text-sky-400 underline'>Vascode Creative</span>
-            </h1>
-            <p className='text-base/8 mb-7'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo incidunt placeat illo unde officia eos eius sunt provident. Necessitatibus, error!</p>
-            <a href="#" className='bg-sky-400 hover:bg-sky-500 transition-all py-2 px-4 text-white shadow rounded-full'>
+            
+            <motion.div
+              initial={{ opacity: 0, x: -100 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              <h1 className='lg:text-5xl/tight text-3xl font-medium mb-7'>
+                Selamat Datang di Company Profile Kami <span className='font-bold text-sky-400 underline'>Vascode Creative</span>
+              </h1>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+            >
+              <TypingAnimation texts={servicesText} />
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 1 }}
+            >
+            <a href="#about" className='bg-sky-400 hover:bg-sky-500 transition-all py-3 px-6 text-lg text-white shadow rounded-full'>
               Tentang Kami <i className="ri-eye-line ms-1"></i>
             </a>
+            </motion.div>
+
           </div>
-          <div className="box">
+          
+          <motion.div 
+            className="box"
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
             <img src={Heroimage} alt="Hero Image" className='md:w-full w-[400px] mx-auto md:m-0' />
-          </div>
+          </motion.div>
         </div>
         
+        {/* KONTEN LAINNYA DIKEMBALIKAN KE VERSI ASLI TANPA ANIMASI */}
         <div className="about grid md:grid-cols-2 grid-cols-1 items-center md:gap-20 gap-10 md:pt-20 pt-32" id='about'>
           <div className="box md:order-1 order-2">
             <img src={Aboutimage} alt="About Image" className='lg:w-[500px] w-[400px] md:m-0 mx-auto' />
@@ -91,9 +126,10 @@ const Homepages = () => {
             </div>
           </div>
         </div>
+
       </div>
     </div>
   )
 }
 
-export default Homepages
+export default HomePage;

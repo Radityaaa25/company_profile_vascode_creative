@@ -1,6 +1,6 @@
-import Navbar from "./component/Navbar";
+import Navbar from "./component/NavigationBar";
 import Footer from "./component/Footer";
-import Homepages from "./pages/Homepages";
+import Homepages from "./pages/Homepage";
 import { motion } from 'framer-motion';
 
 function App() {

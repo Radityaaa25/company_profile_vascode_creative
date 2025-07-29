@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 
-// Definisikan link di luar komponen agar lebih rapi dan tambahkan "Kontak"
 const navLinks = [
   { href: '#home', text: 'Beranda', icon: 'ri-home-2-line' },
   { href: '#about', text: 'Tentang Kami', icon: 'ri-information-line' },
@@ -9,7 +8,7 @@ const navLinks = [
   { href: '#kontak', text: 'Kontak', icon: 'ri-phone-line' },
 ];
 
-const Navbar = () => {
+const NavigationBar = () => {
   const [show, setShow] = useState(false);
   const [scroll, setScroll] = useState(false);
   const [activeSection, setActiveSection] = useState('#home');
@@ -21,7 +20,6 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       setScroll(window.scrollY > 5);
-      // Jika posisi scroll sangat dekat dengan atas, paksa 'Beranda' menjadi aktif.
       if (window.scrollY < 200) {
         setActiveSection('#home');
       }
@@ -32,7 +30,6 @@ const Navbar = () => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          // Observer hanya akan meng-update jika kita TIDAK berada di paling atas.
           if (entry.isIntersecting && window.scrollY >= 200) {
             setActiveSection(`#${entry.target.id}`);
           }
@@ -54,11 +51,16 @@ const Navbar = () => {
     };
   }, []);
 
-  const scrollActive = scroll ? "py-6 bg-white shadow" : "py-4";
+  // PERUBAHAN UTAMA ADA DI SINI
+  const scrollActive = scroll 
+    ? "py-4 mt-2 bg-white/50 dark:bg-slate-80/80 backdrop-blur-lg shadow-md border-b border-x border-slate-200/80 rounded-b-3xl" 
+    : "py-6";
+  
   const menuActive = show ? "left-0" : "-left-full";
 
   return (
-    <div className={`navbar fixed w-full transition-all z-50 ${scrollActive}`}>
+    // Kita kembalikan ke struktur awal yang lebar penuh
+    <div className={`navbar fixed w-full transition-all duration-300 z-50 ${scrollActive}`}>
       <div className="container mx-auto px-4">
         <div className="navbar-box flex items-center justify-between">
           <div className="logo">
@@ -98,4 +100,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavigationBar;
