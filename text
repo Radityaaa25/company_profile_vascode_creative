@@ -3,3 +3,5 @@ branch :
 2. navbar_section
 
 font : Lato
+<p className='text-base/8 mb-7'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo incidunt placeat illo unde officia eos eius sunt provident. Necessitatibus, error!</p>
+text-violet-700 
